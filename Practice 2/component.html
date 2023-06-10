@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        //These are components
+        function Header() {
+
+            return (
+                <header>
+                    <h1>Eve's kitchen</h1>
+                </header>
+            )
+        }
+
+        function Main() {
+            return (
+                <section>
+                <p>We serve the msot delicious food</p>
+                </section>
+            )
+        }
+
+        function render () {
+            return (
+                <div>
+                    <Header />
+                    <Main />
+                </div>
+            )
+        }
+
+        ReactDOM.render(
+            <div>
+                <Header />
+                <Main />
+            </div>, // If we need to 2 components here we need to wrap them in div as parent, else we'll get an error
+            document.getElementById("root") 
+        );
+
+    </script>
+</body>
+</html>

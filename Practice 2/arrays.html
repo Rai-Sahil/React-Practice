@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Header(props) {
+            console.log(props)
+            return (
+                <header>
+                    <h1>{props.name}'s kitchen</h1>
+                </header>
+            )
+        }
+
+        //In javascript everything s should have key, thats's why we need dish object not array.
+        function Main(food) {
+            return (
+                <section>
+                <img 
+                height="200px"
+                alt="Food Image"
+                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80" />
+                <ul>
+                    {food.dishes.map(dish => (<li key={dish.id}>{dish.title}</li>))}
+                </ul>
+                </section>
+            )
+        }
+
+        function Footer (copyright) {
+            return (
+                <footer>
+                    <p>Copyright {copyright.year}</p>
+                </footer>
+            )
+        }
+
+        let thumbs = "👍"
+
+        const dishes_list = [
+            "Mac And Cheese",
+            "Fries",
+            "Pasta"
+        ]
+
+        const dishObject = dishes_list.map((dish, i) => ({
+            id:i,
+            title: dish
+        }))
+
+        ReactDOM.render(
+            <div>
+                <Header name="Sahil"/>
+                <Main dishes={dishObject} adjective="Best" /> {thumbs}
+                <Footer year={new Date().getFullYear()} /> 
+            </div>, // If we need to 2 components here we need to wrap them in div as parent, else we'll get an error
+            document.getElementById("root") 
+        );
+
+    </script>
+</body>
+</html>
